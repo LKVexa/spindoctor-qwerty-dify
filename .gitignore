@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+dist/
+*.difypkg
+*.pem
+.env
+dify-plugin*
+tests/e2e_results.json
+tests/host_check.json
+examples/theory/*.pdf

@@ -1,0 +1,17 @@
+# Files left out of the .difypkg (the packager reads .difyignore instead of .gitignore)
+__pycache__/
+*.pyc
+.venv/
+.git/
+.github/
+tests/
+scripts/
+dist/
+examples/
+*.difypkg
+*.pem
+.env
+dify-plugin*
+E2E_RESULTS.md
+CHANGELOG.md
+.gitignore
