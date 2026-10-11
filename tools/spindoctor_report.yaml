@@ -1,0 +1,51 @@
+# SpinDoctor Qwerty for Dify 1.1.0 - tool spindoctor_report
+# Copyright (C) 2026 RUSSELL PHILIP SMITHSON <russellsmithson77@outlook.com>
+# SPDX-License-Identifier: GPL-3.0-or-later
+identity:
+  name: spindoctor_report
+  author: russellsmithson
+  label:
+    en_US: Show report
+description:
+  human:
+    en_US: Return the text of a SpinDoctor report (TXT) from the workspace, or list the newest reports when no name is given.
+  llm: Return the text of a SpinDoctor report (TXT) from the workspace, or list the newest reports when no name is given.
+parameters:
+- name: name
+  type: string
+  required: false
+  label:
+    en_US: name
+  human_description:
+    en_US: Report file name or path relative to <workspace>/reports (e.g. qc-061.txt).
+  llm_description: Report file name or path relative to <workspace>/reports (e.g. qc-061.txt).
+  form: llm
+- name: limit
+  type: number
+  required: false
+  label:
+    en_US: limit
+  human_description:
+    en_US: How many recent reports to list (default 20).
+  llm_description: How many recent reports to list (default 20).
+  form: llm
+- name: workspace
+  type: string
+  required: false
+  label:
+    en_US: Workspace folder
+  human_description:
+    en_US: 'Optional workspace folder on the plugin host (default: <temp>/spindoctor-workspace). Set it in the tool settings, not by the model.'
+  form: form
+- name: attach_reports
+  type: boolean
+  required: false
+  label:
+    en_US: Attach reports
+  human_description:
+    en_US: Attach the newest TXT and PDF report to the answer as files (default on).
+  form: form
+  default: true
+extra:
+  python:
+    source: tools/spindoctor_report.py

@@ -1,0 +1,51 @@
+# SpinDoctor Qwerty for Dify 1.1.0 - tool spindoctor_run_preset
+# Copyright (C) 2026 RUSSELL PHILIP SMITHSON <russellsmithson77@outlook.com>
+# SPDX-License-Identifier: GPL-3.0-or-later
+identity:
+  name: spindoctor_run_preset
+  author: russellsmithson
+  label:
+    en_US: Run preset
+description:
+  human:
+    en_US: Run one of the 241 built-in SpinDoctor presets (qc-001..qc-241) with optional name=value overrides; returns per-step results and report paths.
+  llm: Run one of the 241 built-in SpinDoctor presets (qc-001..qc-241) with optional name=value overrides; returns per-step results and report paths.
+parameters:
+- name: preset_id
+  type: string
+  required: true
+  label:
+    en_US: preset_id
+  human_description:
+    en_US: Preset id such as qc-061 (qc-001..qc-241).
+  llm_description: Preset id such as qc-061 (qc-001..qc-241).
+  form: llm
+- name: overrides
+  type: string
+  required: false
+  label:
+    en_US: overrides
+  human_description:
+    en_US: Optional space-separated name=value overrides (shots, basis, qubits, input, angle), e.g. 'shots=4096 basis=x'.
+  llm_description: Optional space-separated name=value overrides (shots, basis, qubits, input, angle), e.g. 'shots=4096 basis=x'.
+  form: llm
+- name: workspace
+  type: string
+  required: false
+  label:
+    en_US: Workspace folder
+  human_description:
+    en_US: 'Optional workspace folder on the plugin host (default: <temp>/spindoctor-workspace). Set it in the tool settings, not by the model.'
+  form: form
+- name: attach_reports
+  type: boolean
+  required: false
+  label:
+    en_US: Attach reports
+  human_description:
+    en_US: Attach the newest TXT and PDF report to the answer as files (default on).
+  form: form
+  default: true
+extra:
+  python:
+    source: tools/spindoctor_run_preset.py
