@@ -1,0 +1,50 @@
+# SpinDoctor Qwerty for Dify 1.1.0 - tool spindoctor_functions
+# Copyright (C) 2026 RUSSELL PHILIP SMITHSON <russellsmithson77@outlook.com>
+# SPDX-License-Identifier: GPL-3.0-or-later
+identity:
+  name: spindoctor_functions
+  author: russellsmithson
+  label:
+    en_US: Function table
+description:
+  human:
+    en_US: 'Return the in-chat Markdown table of EVERY SpinDoctor function: columns Function | What it does | Command to type, grouped by command family, with real runnable examples (plus the 241 presets with section=''presets''). Show the table to the user verbatim when they ask what the plugin can do, ask for help/functions, or on first use.'
+  llm: 'Return the in-chat Markdown table of EVERY SpinDoctor function: columns Function | What it does | Command to type, grouped by command family, with real runnable examples (plus the 241 presets with section=''presets''). Show the table to the user verbatim when they ask what the plugin can do, ask for help/functions, or on first use.'
+parameters:
+- name: section
+  type: select
+  required: false
+  label:
+    en_US: section
+  human_description:
+    en_US: 'commands (default: tools + every q.* family + gates), gates, tools, presets (241 rows) or all.'
+  llm_description: 'commands (default: tools + every q.* family + gates), gates, tools, presets (241 rows) or all.'
+  form: llm
+  options:
+  - value: commands
+    label:
+      en_US: commands
+  - value: gates
+    label:
+      en_US: gates
+  - value: tools
+    label:
+      en_US: tools
+  - value: presets
+    label:
+      en_US: presets
+  - value: all
+    label:
+      en_US: all
+- name: filter
+  type: string
+  required: false
+  label:
+    en_US: filter
+  human_description:
+    en_US: Optional case-insensitive text filter (e.g. 'tranche', 'noise', 'grover').
+  llm_description: Optional case-insensitive text filter (e.g. 'tranche', 'noise', 'grover').
+  form: llm
+extra:
+  python:
+    source: tools/spindoctor_functions.py

@@ -1,0 +1,25 @@
+# SpinDoctor Qwerty for Dify 1.1.0 - tool spindoctor_list_presets
+# Copyright (C) 2026 RUSSELL PHILIP SMITHSON <russellsmithson77@outlook.com>
+# SPDX-License-Identifier: GPL-3.0-or-later
+identity:
+  name: spindoctor_list_presets
+  author: russellsmithson
+  label:
+    en_US: List presets
+description:
+  human:
+    en_US: List the SpinDoctor presets (id, category, label, availability, commands). Optional case-insensitive filter text.
+  llm: List the SpinDoctor presets (id, category, label, availability, commands). Optional case-insensitive filter text.
+parameters:
+- name: filter
+  type: string
+  required: false
+  label:
+    en_US: filter
+  human_description:
+    en_US: Optional case-insensitive text filter.
+  llm_description: Optional case-insensitive text filter.
+  form: llm
+extra:
+  python:
+    source: tools/spindoctor_list_presets.py
