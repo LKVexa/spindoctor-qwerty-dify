@@ -1,0 +1,20 @@
+SpinDoctor Qwerty for Dify (spindoctor-qwerty-dify)
+Copyright (C) 2026 RUSSELL PHILIP SMITHSON <russellsmithson77@outlook.com>
+Licensed under the GNU General Public License v3.0 or later (GPL-3.0-or-later); see LICENSE.
+
+Author: RUSSELL PHILIP SMITHSON <russellsmithson77@outlook.com>
+
+This product bundles the SpinDoctor Qwerty engine 1.1.0, a pure-Python (standard library only) port of the
+SpinDoctor 3.1.2 quantum-circuit simulator semantics (update 3.1.2-298-20261010), by the same author.
+
+SpinDoctor is a CLASSICAL simulator: it runs FP64 arithmetic on an ordinary computer. It is not a quantum computer,
+does not connect to quantum hardware, and claims no quantum speed-up or quantum advantage.
+
+Third-party names (host applications, file formats, protocols) are trademarks of their respective owners and are used
+only to describe compatibility. No third-party code is vendored in this repository except where stated in README.md.
+
+The plugin runs on the dify_plugin SDK (Apache License 2.0, https://github.com/langgenius/dify-plugin-sdks), which Dify installs from
+PyPI when the plugin is installed; it is not included in this repository or in the package. The tests use the official Dify plugin CLI
+(https://github.com/langgenius/dify-plugin-daemon, Apache License 2.0), downloaded separately; it is not included either.
+
+Dify is a trademark of LangGenius, Inc. This project is not affiliated with or endorsed by LangGenius.
