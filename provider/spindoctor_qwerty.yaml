@@ -1,0 +1,24 @@
+# SpinDoctor Qwerty for Dify 1.1.0 - tool provider
+# Copyright (C) 2026 RUSSELL PHILIP SMITHSON <russellsmithson77@outlook.com>
+# SPDX-License-Identifier: GPL-3.0-or-later
+identity:
+  author: russellsmithson
+  name: spindoctor_qwerty
+  label:
+    en_US: SpinDoctor Qwerty
+  description:
+    en_US: 'Classical quantum-circuit simulator (SpinDoctor 3.1.2 parity): q.* scripts, 241 presets, q.folder, theory testing and TXT/PDF reports. No credentials, no network.'
+  icon: icon.svg
+  tags:
+  - utilities
+  - education
+tools:
+- tools/spindoctor_run_script.yaml
+- tools/spindoctor_run_preset.yaml
+- tools/spindoctor_list_presets.yaml
+- tools/spindoctor_report.yaml
+- tools/spindoctor_functions.yaml
+- tools/spindoctor_test_theory.yaml
+extra:
+  python:
+    source: provider/spindoctor_qwerty.py
