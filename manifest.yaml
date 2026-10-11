@@ -1,0 +1,38 @@
+# SpinDoctor Qwerty for Dify 1.1.0 - plugin manifest (Dify plugin manifest, meta.version 0.0.1)
+# Copyright (C) 2026 RUSSELL PHILIP SMITHSON <russellsmithson77@outlook.com>
+# SPDX-License-Identifier: GPL-3.0-or-later
+version: 1.1.0
+type: plugin
+author: russellsmithson
+name: spindoctor_qwerty
+label:
+  en_US: SpinDoctor Qwerty
+description:
+  en_US: 'SpinDoctor 3.1.2 quantum-circuit SIMULATOR (classical FP64 on the Dify plugin host, not a quantum computer): q.* scripts, 241 presets, q.folder, theory testing, TXT/PDF reports.'
+icon: icon.svg
+resource:
+  memory: 1073741824
+  permission:
+    storage:
+      enabled: true
+      size: 104857600
+plugins:
+  tools:
+  - provider/spindoctor_qwerty.yaml
+meta:
+  version: 0.0.1
+  arch:
+  - amd64
+  - arm64
+  runner:
+    language: python
+    version: '3.12'
+    entrypoint: main
+  minimum_dify_version: 1.0.0
+tags:
+- utilities
+- education
+created_at: '2026-10-11T00:00:00Z'
+privacy: PRIVACY.md
+repo: https://github.com/LKVexa/spindoctor-qwerty-dify
+verified: false
