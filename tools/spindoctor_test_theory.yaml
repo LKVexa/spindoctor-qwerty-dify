@@ -1,0 +1,176 @@
+# SpinDoctor Qwerty for Dify 1.1.0 - tool spindoctor_test_theory
+# Copyright (C) 2026 RUSSELL PHILIP SMITHSON <russellsmithson77@outlook.com>
+# SPDX-License-Identifier: GPL-3.0-or-later
+identity:
+  name: spindoctor_test_theory
+  author: russellsmithson
+  label:
+    en_US: Test a theory
+description:
+  human:
+    en_US: 'Test a theory/experiment with the simulator and write a TXT+JSON+PDF theory test report (hypothesis, script, raw results, verdict supported / not supported / inconclusive, limits). source=''file'': a .txt/.md/.pdf/.py/.json/.csv/.q attachment by local path; source=''text'': pasted text; source=''chat'': a theory summary the AI wrote from the conversation and the user confirmed, plus optional quoted excerpts and/or an exported chat transcript (.txt/.md/.json/.html). Use action=''extract'' first to read the source, then action=''run'' with hypothesis, prediction, checks and a q.* script. The plugin cannot read chat history or host attachments by itself.'
+  llm: 'Test a theory/experiment with the simulator and write a TXT+JSON+PDF theory test report (hypothesis, script, raw results, verdict supported / not supported / inconclusive, limits). source=''file'': a .txt/.md/.pdf/.py/.json/.csv/.q attachment by local path; source=''text'': pasted text; source=''chat'': a theory summary the AI wrote from the conversation and the user confirmed, plus optional quoted excerpts and/or an exported chat transcript (.txt/.md/.json/.html). Use action=''extract'' first to read the source, then action=''run'' with hypothesis, prediction, checks and a q.* script. The plugin cannot read chat history or host attachments by itself.'
+parameters:
+- name: action
+  type: select
+  required: false
+  label:
+    en_US: action
+  human_description:
+    en_US: extract = read/parse the source only; run (default) = run the script, compare, write the report.
+  llm_description: extract = read/parse the source only; run (default) = run the script, compare, write the report.
+  form: llm
+  options:
+  - value: extract
+    label:
+      en_US: extract
+  - value: run
+    label:
+      en_US: run
+- name: source
+  type: select
+  required: false
+  label:
+    en_US: source
+  human_description:
+    en_US: Where the theory comes from.
+  llm_description: Where the theory comes from.
+  form: llm
+  options:
+  - value: file
+    label:
+      en_US: file
+  - value: text
+    label:
+      en_US: text
+  - value: chat
+    label:
+      en_US: chat
+- name: file
+  type: file
+  required: false
+  label:
+    en_US: file
+  human_description:
+    en_US: Optional uploaded theory attachment (.txt/.md/.pdf/.py/.json/.csv/.q) or exported chat transcript (.txt/.md/.json/.html).
+  llm_description: Optional uploaded theory attachment (.txt/.md/.pdf/.py/.json/.csv/.q) or exported chat transcript (.txt/.md/.json/.html).
+  form: llm
+- name: path
+  type: string
+  required: false
+  label:
+    en_US: path
+  human_description:
+    en_US: Path of a theory file or chat transcript on the plugin host (use the file upload in Dify chats).
+  llm_description: Path of a theory file or chat transcript on the plugin host (use the file upload in Dify chats).
+  form: llm
+- name: text
+  type: string
+  required: false
+  label:
+    en_US: text
+  human_description:
+    en_US: 'Pasted theory text (source=text) or the confirmed theory summary: claims, assumptions, variables, measurable prediction (source=chat).'
+  llm_description: 'Pasted theory text (source=text) or the confirmed theory summary: claims, assumptions, variables, measurable prediction (source=chat).'
+  form: llm
+- name: excerpts
+  type: string
+  required: false
+  label:
+    en_US: excerpts
+  human_description:
+    en_US: 'source=chat: verbatim quotes from the conversation, ONE PER LINE (e.g. ''User: ...'', ''Assistant: ...'').'
+  llm_description: 'source=chat: verbatim quotes from the conversation, ONE PER LINE (e.g. ''User: ...'', ''Assistant: ...'').'
+  form: llm
+- name: hypothesis
+  type: string
+  required: false
+  label:
+    en_US: hypothesis
+  human_description:
+    en_US: The hypothesis restated in one or two sentences (required for run).
+  llm_description: The hypothesis restated in one or two sentences (required for run).
+  form: llm
+- name: prediction
+  type: string
+  required: false
+  label:
+    en_US: prediction
+  human_description:
+    en_US: The measurable prediction in words (required for run).
+  llm_description: The measurable prediction in words (required for run).
+  form: llm
+- name: checks
+  type: string
+  required: false
+  label:
+    en_US: checks
+  human_description:
+    en_US: 'JSON array of machine checks. Machine checks. {kind:''probability'', outcome:''00'', expected:0.5, tolerance:0.05, command?:N} (bitstrings: qubit 0 is the RIGHTMOST bit; uses the last histogram or zero/one counts) | {kind:''value'', command:N, path:''result.fidelity'', op:''approx|eq|ne|lt|le|gt|ge|contains|true|false'', value:X, tolerance?:T} | {kind:''ok'', command:N, expected:true}.'
+  llm_description: 'JSON array of machine checks. Machine checks. {kind:''probability'', outcome:''00'', expected:0.5, tolerance:0.05, command?:N} (bitstrings: qubit 0 is the RIGHTMOST bit; uses the last histogram or zero/one counts) | {kind:''value'', command:N, path:''result.fidelity'', op:''approx|eq|ne|lt|le|gt|ge|contains|true|false'', value:X, tolerance?:T} | {kind:''ok'', command:N, expected:true}.'
+  form: llm
+- name: script
+  type: string
+  required: false
+  label:
+    en_US: script
+  human_description:
+    en_US: q.* commands, one per line (defaults to q.* lines found in the source).
+  llm_description: q.* commands, one per line (defaults to q.* lines found in the source).
+  form: llm
+- name: assumptions
+  type: string
+  required: false
+  label:
+    en_US: assumptions
+  human_description:
+    en_US: Optional assumptions, one per line.
+  llm_description: Optional assumptions, one per line.
+  form: llm
+- name: variables
+  type: string
+  required: false
+  label:
+    en_US: variables
+  human_description:
+    en_US: Optional variables, one per line.
+  llm_description: Optional variables, one per line.
+  form: llm
+- name: title
+  type: string
+  required: false
+  label:
+    en_US: title
+  human_description:
+    en_US: Optional report title.
+  llm_description: Optional report title.
+  form: llm
+- name: isolate
+  type: boolean
+  required: false
+  label:
+    en_US: isolate
+  human_description:
+    en_US: 'Default true: run in a fresh sub-workspace (<workspace>/theory-runs/<id>) so names never collide; false = use the shared workspace state.'
+  llm_description: 'Default true: run in a fresh sub-workspace (<workspace>/theory-runs/<id>) so names never collide; false = use the shared workspace state.'
+  form: llm
+- name: workspace
+  type: string
+  required: false
+  label:
+    en_US: Workspace folder
+  human_description:
+    en_US: 'Optional workspace folder on the plugin host (default: <temp>/spindoctor-workspace). Set it in the tool settings, not by the model.'
+  form: form
+- name: attach_reports
+  type: boolean
+  required: false
+  label:
+    en_US: Attach reports
+  human_description:
+    en_US: Attach the newest TXT and PDF report to the answer as files (default on).
+  form: form
+  default: true
+extra:
+  python:
+    source: tools/spindoctor_test_theory.py

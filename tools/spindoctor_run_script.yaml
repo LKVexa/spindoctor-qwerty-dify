@@ -1,0 +1,51 @@
+# SpinDoctor Qwerty for Dify 1.1.0 - tool spindoctor_run_script
+# Copyright (C) 2026 RUSSELL PHILIP SMITHSON <russellsmithson77@outlook.com>
+# SPDX-License-Identifier: GPL-3.0-or-later
+identity:
+  name: spindoctor_run_script
+  author: russellsmithson
+  label:
+    en_US: Run q.* script
+description:
+  human:
+    en_US: 'Run one or more SpinDoctor q.* commands (one per line) in the persistent simulator workspace and return each result plus TXT/JSON/PDF report paths. Classical FP64 simulation only; not a quantum computer. Example: ''q.circuit new bell 2\nq.circuit add h 0\nq.circuit add cx 0 1\nq.circuit run shots 1000 basis z''.'
+  llm: 'Run one or more SpinDoctor q.* commands (one per line) in the persistent simulator workspace and return each result plus TXT/JSON/PDF report paths. Classical FP64 simulation only; not a quantum computer. Example: ''q.circuit new bell 2\nq.circuit add h 0\nq.circuit add cx 0 1\nq.circuit run shots 1000 basis z''.'
+parameters:
+- name: script
+  type: string
+  required: true
+  label:
+    en_US: script
+  human_description:
+    en_US: 'q.* commands, one per line; blank lines and # comments are ignored. Use $FILES for the folder holding the uploaded files, e.g. q.folder run path="$FILES".'
+  llm_description: 'q.* commands, one per line; blank lines and # comments are ignored. Use $FILES for the folder holding the uploaded files, e.g. q.folder run path="$FILES".'
+  form: llm
+- name: files
+  type: files
+  required: false
+  label:
+    en_US: files
+  human_description:
+    en_US: Optional uploaded command files (.txt/.csv/.json/.qasm/.qasm2/.circuit/.pdf); they are saved into one fresh folder that $FILES points to (for q.folder run).
+  llm_description: Optional uploaded command files (.txt/.csv/.json/.qasm/.qasm2/.circuit/.pdf); they are saved into one fresh folder that $FILES points to (for q.folder run).
+  form: llm
+- name: workspace
+  type: string
+  required: false
+  label:
+    en_US: Workspace folder
+  human_description:
+    en_US: 'Optional workspace folder on the plugin host (default: <temp>/spindoctor-workspace). Set it in the tool settings, not by the model.'
+  form: form
+- name: attach_reports
+  type: boolean
+  required: false
+  label:
+    en_US: Attach reports
+  human_description:
+    en_US: Attach the newest TXT and PDF report to the answer as files (default on).
+  form: form
+  default: true
+extra:
+  python:
+    source: tools/spindoctor_run_script.py
